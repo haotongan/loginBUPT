@@ -24,7 +24,7 @@ def get_gw_state():
 
 # 登出
 def logout():
-    r= s.get(logout_url)
+    r = s.get(logout_url)
     get_gw_state()
 
 
@@ -32,21 +32,21 @@ def logout():
 def login():
     option = raw_input("是否使用原账号登陆？[y/n]")
     if option == 'y' or option == 'Y':
-        username = ''
-        userpass = ''
-        line = ''
+        user_name = ''
+        user_pass = ''
+        user_line = ''
     else:
-        username = raw_input("请输入您的用户名")
-        userpass = getpass.getpass("请输入您的密码")
-        line = ''
+        user_name = raw_input("请输入您的用户名")
+        user_pass = getpass.getpass("请输入您的密码")
+        user_line = ''
         operator = raw_input("请输入运营商线路，默认为校园网，中国联通请输入1，中国移动请输入2，中国电信请输入3")
         if operator == 1:
-            line = 'CUC-BRAS'
+            user_line = 'CUC-BRAS'
         elif operator == 2:
-            line = 'CMCC-BRAS'
+            user_line = 'CMCC-BRAS'
         elif operator == 3:
-            line = 'CT-BRAS'
-    payload = {'user': username, 'pass': userpass, 'line': line}
+            user_line = 'CT-BRAS'
+    payload = {'user': user_name, 'pass': user_pass, 'line': user_line}
     r = s.post(url, data=payload)
     get_gw_state()
 
