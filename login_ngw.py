@@ -39,13 +39,14 @@ def login():
         user_name = raw_input("请输入您的用户名")
         user_pass = getpass.getpass("请输入您的密码")
         user_line = ''
-        operator = raw_input("请输入运营商线路，默认为校园网，中国联通请输入1，中国移动请输入2，中国电信请输入3")
-        if operator == 1:
+        operator = raw_input("请输入运营商线路[默认为校园网，中国联通请输入1，中国移动请输入2，中国电信请输入3]")
+        if operator == '1':
             user_line = 'CUC-BRAS'
-        elif operator == 2:
+        elif operator == '2':
             user_line = 'CMCC-BRAS'
-        elif operator == 3:
+        elif operator == '3':
             user_line = 'CT-BRAS'
+        print user_line
     payload = {'user': user_name, 'pass': user_pass, 'line': user_line}
     r = s.post(url, data=payload)
     get_gw_state()
